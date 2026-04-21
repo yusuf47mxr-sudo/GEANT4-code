@@ -1,0 +1,18 @@
+# Python sanal ortamı ve kütüphaneler (Kesinlikle gitmemeli)
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Geant4 Derleme (Build) klasörleri ve sistem dosyaları
+build/
+CMakeFiles/
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+
+# ROOT ve Veri Dosyaları
+*.root
+*.ntuple
+*.so
+*.a
