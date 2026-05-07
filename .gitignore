@@ -1,4 +1,4 @@
-# Python sanal ortamı ve kütüphaneler (Kesinlikle gitmemeli)
+# Python sanal ortamı ve kütüphaneler
 .venv/
 venv/
 __pycache__/
