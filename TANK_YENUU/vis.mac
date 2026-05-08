@@ -1,0 +1,9 @@
+/vis/open OGL
+/vis/drawVolume
+/vis/viewer/set/autoRefresh true
+/vis/scene/add/trajectories smooth
+    
+# Fotonları açık mavi (cyan), müonu kırmızı yap
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton cyan
+/vis/modeling/trajectories/drawByParticleID-0/set mu- red
