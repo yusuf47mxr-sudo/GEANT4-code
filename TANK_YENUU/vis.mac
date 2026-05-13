@@ -2,8 +2,17 @@
 /vis/drawVolume
 /vis/viewer/set/autoRefresh true
 /vis/scene/add/trajectories smooth
-    
+
 # Fotonları açık mavi (cyan), müonu kırmızı yap
 /vis/modeling/trajectories/create/drawByParticleID
 /vis/modeling/trajectories/drawByParticleID-0/set opticalphoton cyan
 /vis/modeling/trajectories/drawByParticleID-0/set mu- red
+#ızgara uçun
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 72
+/visviewer/set/viewpointThetaPhi 70 20
+#fultra içun
+/vis/filtering/trajectories/create/particle/Filter
+/vis/filtering/trajectories/particleFilter-0/add mu-
+/vis/filtering/trajectories/particleFilter-0/add opticalphoton
+/run/setCut 10 m
