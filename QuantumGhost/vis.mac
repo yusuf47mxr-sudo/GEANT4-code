@@ -1,0 +1,18 @@
+# OGL (OpenGL) arayüzünü aç
+/vis/open OGL 600x600-0+0
+
+# Geometriyi çiz
+/vis/drawVolume
+
+# Kamerayı ayarla
+/vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/set/autoRefresh true
+
+# Parçacık izlerini (trajectories) ekrana çiz
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+# Her yeni olayda (event) ekranı temizlemeden üst üste çiz
+/vis/scene/endOfEventAction accumulate
