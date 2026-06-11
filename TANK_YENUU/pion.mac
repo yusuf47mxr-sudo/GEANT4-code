@@ -1,0 +1,27 @@
+/run/initialize
+/gun/particle pi-
+
+/run/printProgress 500
+/event/verbose 0
+/tracking/verbose 0
+
+# --- 100 MeV ---
+/gun/energy 100 MeV
+/analysis/setFileName pion_100MeV.root
+/run/beamOn 1000
+
+# --- 500 MeV ---
+/gun/energy 500 MeV
+/analysis/setFileName pion_500MeV.root
+/run/beamOn 1000
+
+# --- 1 GeV ---
+/gun/energy 1 GeV
+/analysis/setFileName pion_1GeV.root
+/run/beamOn 1000
+
+# --- 1.5 GeV ---
+/gun/energy 1.5 GeV
+/analysis/setFileName pion_1.5GeV.root
+/run/beamOn 1000
+
