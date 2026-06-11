@@ -2,7 +2,7 @@
 
 // Gerekli Fizik Modülleri
 #include "G4DecayPhysics.hh"
-#include "G4EmLivermorePolarizedPhysics.hh" // BİZİM İÇİN EN KRİTİK MODÜL
+#include "G4EmLivermorePolarizedPhysics.hh" // EN KRİTİK MODÜL
 #include "G4EmExtraPhysics.hh"
 #include "G4IonPhysics.hh"
 #include "G4StoppingPhysics.hh"
@@ -23,7 +23,7 @@ PhysicsList::PhysicsList()
     // Standart G4EmStandardPhysics YERİNE bunu kullanıyoruz!
     RegisterPhysics(new G4EmLivermorePolarizedPhysics());
 
-    // 3. İsteğe Bağlı Ekstra Fizik Paketleri (Eksiksiz bir simülasyon için)
+    // 3. diyer fizik parametreleri
     RegisterPhysics(new G4EmExtraPhysics());
     RegisterPhysics(new G4HadronElasticPhysics());
     RegisterPhysics(new G4HadronPhysicsFTFP_BERT());

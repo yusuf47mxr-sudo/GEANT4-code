@@ -1,0 +1,8 @@
+# 1. Çekirdeği ve Geometriyi Başlat
+/run/initialize
+
+# 2. HER 1000.000 OLAYDA BİR TERMİNALE DURUM YAZDIR
+/run/printProgress 1000000
+
+# 3. 10 MİLYON KUANTUM FOTONUNU ATEŞLE
+/run/beamOn 10000000

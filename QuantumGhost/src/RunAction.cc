@@ -2,8 +2,7 @@
 #include "G4AnalysisManager.hh"
 #include "G4Run.hh"
 
-RunAction::RunAction()
-: G4UserRunAction()
+RunAction::RunAction(): G4UserRunAction()
 {
     // Analiz Yöneticisini Başlat
     G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();

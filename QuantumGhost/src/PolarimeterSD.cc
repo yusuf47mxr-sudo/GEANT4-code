@@ -53,3 +53,9 @@ G4bool PolarimeterSD::ProcessHits(G4Step* aStep, G4TouchableHistory*)
 
     return true;
 }
+
+
+
+
+
+

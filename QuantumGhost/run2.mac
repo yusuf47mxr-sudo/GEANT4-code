@@ -1,0 +1,23 @@
+#FOR blender
+# 1. MOTORU BAŞLAT (Geometriyi ve Fiziği İnşa Et)
+/run/initialize
+
+# 2. VRML GÖRÜNTÜLEYİCİYİ AÇ (Dosya çıktısı için)
+/vis/open VRML2FILE
+
+# 3. Geometriyi çiz
+/vis/drawVolume
+
+# 4. Parçacık izlerini (trajectories) ekrana çiz
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByCharge
+/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+
+# 5. Her yeni olayda ekranı temizlemeden üst üste çiz (Biriktir)
+/vis/scene/endOfEventAction accumulate
+
+# 6. 100 parçacık (şimdilik bura kapalı olsun)
+
+# 7. Çizimi bitir ve dosyayı kaydet
+/vis/viewer/flush
