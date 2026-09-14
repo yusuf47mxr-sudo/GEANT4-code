@@ -1,0 +1,19 @@
+# Derleme çıktıları
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Derlenmiş nesne/çalıştırılabilir dosyalar
+*.o
+*.o.d
+QuantumGhost
+!QuantumGhost.cc
+
+# Simülasyon çıktıları (büyük olabilir, koddan yeniden üretilebilir)
+*.root
+*.wrl
+
+# Editör / IDE
+.vscode/
