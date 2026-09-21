@@ -19,11 +19,21 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     G4Material* env_air = nist->FindOrBuildMaterial("G4_AIR");
     G4Material* water   = nist->FindOrBuildMaterial("G4_WATER");
 
-    G4double photonEnergy[] = {1.5*eV, 3.4*eV};
-    G4double waterRINDEX[]  = {1.33, 1.33}; 
-    
+    // Suyun görünür bölgedeki gerçekçi kırılma indisi dağılımı (dispersion).
+    // Sabit RINDEX yerine enerjiye bağlı bu eğri kullanıldığında Cherenkov
+    // fotonları fiziksel olarak doğru bir spektrumda üretilir.
+    const G4int nEntries = 12;
+    G4double photonEnergy[nEntries] = {
+        2.034*eV, 2.177*eV, 2.341*eV, 2.532*eV, 2.757*eV, 3.026*eV,
+        3.353*eV, 3.545*eV, 3.760*eV, 4.002*eV, 4.135*eV, 4.279*eV
+    };
+    G4double waterRINDEX[nEntries] = {
+        1.3435, 1.3455, 1.3475, 1.3500, 1.3522, 1.3545,
+        1.3572, 1.3589, 1.3608, 1.3628, 1.3639, 1.3651
+    };
+
     G4MaterialPropertiesTable* mptWater = new G4MaterialPropertiesTable();
-    mptWater->AddProperty("RINDEX", photonEnergy, waterRINDEX, 2);
+    mptWater->AddProperty("RINDEX", photonEnergy, waterRINDEX, nEntries);
     water->SetMaterialPropertiesTable(mptWater);
 
     G4Box* solidWorld = new G4Box("World", 1.5*m, 1.5*m, 1.5*m);
@@ -44,12 +54,13 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     zifiriKaranlik->SetFinish(polished);
     zifiriKaranlik->SetModel(unified);
 
-    G4double yansimaSifir[] = {0.0, 0.0};  
-    G4double yutmaYuzdeYuz[] = {1.0, 1.0}; 
+    G4double blackSurfaceEnergy[] = {photonEnergy[0], photonEnergy[nEntries - 1]};
+    G4double yansimaSifir[]       = {0.0, 0.0};
+    G4double yutmaYuzdeYuz[]      = {1.0, 1.0};
 
     G4MaterialPropertiesTable* mptSiyah = new G4MaterialPropertiesTable();
-    mptSiyah->AddProperty("REFLECTIVITY", photonEnergy, yansimaSifir, 2);
-    mptSiyah->AddProperty("EFFICIENCY", photonEnergy, yutmaYuzdeYuz, 2);
+    mptSiyah->AddProperty("REFLECTIVITY", blackSurfaceEnergy, yansimaSifir, 2);
+    mptSiyah->AddProperty("EFFICIENCY", blackSurfaceEnergy, yutmaYuzdeYuz, 2);
     zifiriKaranlik->SetMaterialPropertiesTable(mptSiyah);
 
     new G4LogicalSkinSurface("TankSiyahKaplama", logicTank, zifiriKaranlik);

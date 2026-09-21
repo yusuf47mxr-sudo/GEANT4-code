@@ -7,7 +7,7 @@ TankRunAction::TankRunAction() {
     
     analysisManager->SetNtupleMerging(true);
 
-    analysisManager->SetFileName("TANK_Cikti"); 
+    analysisManager->SetFileName("CherenkovTank_Cikti");
 
     analysisManager->CreateNtuple("TankData", "Simulasyon Verileri");
     analysisManager->CreateNtupleDColumn("Edep");

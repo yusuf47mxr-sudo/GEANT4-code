@@ -1,4 +1,4 @@
-# TANK_YENUU
+# CherenkovTank
 
 Geant4 tabanlı bir su-Cherenkov dedektör simülasyonu: silindirik bir su
 tankının merkezinden geçirilen yüklü parçacıkların (müon, pion, elektron)
@@ -12,14 +12,22 @@ enerjisine bağlı olarak incelenmesi.
   ("zifiri karanlık") bir optik yüzey tanımlanmıştır; böylece yalnızca tek
   geçişte üretilen Cherenkov fotonları gözlemlenir, çoklu yansıma/toplama
   modellenmez.
-- Suya RINDEX = 1.33 sabit kırılma indisiyle bir malzeme özellik tablosu
-  tanımlanmıştır, bu da Cherenkov ışığı üretimi için gereklidir.
+- Suya, sabit bir RINDEX yerine görünür bölgeyi kapsayan enerjiye bağlı
+  gerçekçi bir kırılma indisi dağılımı (dispersion, ~1.3435–1.3651 arası)
+  tanımlanmıştır; bu, Cherenkov fotonlarının fiziksel olarak doğru bir
+  enerji spektrumunda üretilmesini sağlar.
+- Cerenkov süreci `G4OpticalParameters` üzerinden ayarlanır: adım başına
+  üretilebilecek foton sayısı ve parçacığın beta'sındaki adım başı izin
+  verilen değişim sınırlandırılarak (`TankPhysicsList`) hem fiziksel
+  tutarlılık hem de sayısal kararlılık sağlanır.
 - Parçacıklar tankın üstünden, merkez eksen boyunca (-z yönünde) tek yönlü
   olarak gönderilir (`TankPrimaryGeneratorAction`).
 - Fizik listesi standart elektromanyetik süreçlerin yanında
   `G4OpticalPhysics` içerir, böylece Cherenkov ışığı üretimi ve taşınımı
   aktif olarak simüle edilir.
-- Her adımda üretilen ikincil optik fotonlar arasından Cherenkov sürecinden
+- Enerji biriktirme ve foton sayımı yalnızca su tankı hacmi (`SuTanki`)
+  içindeki adımlardan yapılır; world hacmindeki adımlar hesaba katılmaz.
+  Her adımda üretilen ikincil optik fotonlar arasından Cherenkov sürecinden
   gelenler ayıklanır; bu fotonların ana parçacığın hareket yönüyle yaptığı
   açı (Cherenkov açısı) hesaplanır (`TankSteppingAction`).
 - Olay başına toplam enerji biriktirme ve üretilen foton sayısı, her
@@ -29,7 +37,7 @@ enerjisine bağlı olarak incelenmesi.
 ## Proje Yapısı
 
 ```
-TANK_YENUU/
+CherenkovTank/
 ├── include/     # Sınıf başlıkları (.hh)
 ├── src/         # Sınıf implementasyonları (.cc)
 ├── tank_sim.cc  # main() - programın giriş noktası
@@ -53,7 +61,7 @@ cmake ..
 make -j$(nproc)
 ```
 
-Derleme sonucunda `Okey_DOKEY` çalıştırılabilir dosyası üretilir. Simülasyon,
+Derleme sonucunda `CherenkovTank` çalıştırılabilir dosyası üretilir. Simülasyon,
 çoklu iş parçacığı (multi-threading) desteğiyle 12 thread üzerinde çalışacak
 şekilde yapılandırılmıştır.
 
@@ -62,13 +70,13 @@ Derleme sonucunda `Okey_DOKEY` çalıştırılabilir dosyası üretilir. Simüla
 Görsel (interaktif) mod, `vis.mac` otomatik olarak çalıştırılır:
 
 ```bash
-./Okey_DOKEY
+./CherenkovTank
 ```
 
 Toplu (batch) mod, örneğin müon taraması için:
 
 ```bash
-./Okey_DOKEY muyon.mac
+./CherenkovTank muyon.mac
 ```
 
 Her enerji noktası için ayrı bir ROOT dosyası üretilir (örn.
@@ -84,5 +92,3 @@ Ntuple'lar:
 - Hadronik fizik süreçleri kayıtlı değildir; pion gibi hadronlar için nükleer
   etkileşim/absorpsiyon modellenmez, yalnızca elektromanyetik enerji kaybı
   hesaplanır.
-- Enerji ve foton sayımı, tanka özel bir hassas hacim yerine world içindeki
-  tüm adımlar üzerinden toplanmaktadır.

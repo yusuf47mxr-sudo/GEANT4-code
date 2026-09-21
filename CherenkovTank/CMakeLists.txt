@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
-project(TankSim)
+project(CherenkovTank)
 
 # Geant4'ü ve görselleştirme araçlarını bul
 find_package(Geant4 REQUIRED ui_all vis_all)
@@ -13,5 +13,5 @@ file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 
 # Ana programı derle
-add_executable(Okey_DOKEY tank_sim.cc ${sources} ${headers})
-target_link_libraries(Okey_DOKEY ${Geant4_LIBRARIES})
+add_executable(CherenkovTank tank_sim.cc ${sources} ${headers})
+target_link_libraries(CherenkovTank ${Geant4_LIBRARIES})
