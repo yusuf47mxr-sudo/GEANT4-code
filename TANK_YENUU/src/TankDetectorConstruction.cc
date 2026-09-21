@@ -19,7 +19,6 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     G4Material* env_air = nist->FindOrBuildMaterial("G4_AIR");
     G4Material* water   = nist->FindOrBuildMaterial("G4_WATER");
 
-    // SADECE SUYUN KIRMA İNDİSİ
     G4double photonEnergy[] = {1.5*eV, 3.4*eV};
     G4double waterRINDEX[]  = {1.33, 1.33}; 
     
@@ -27,7 +26,6 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     mptWater->AddProperty("RINDEX", photonEnergy, waterRINDEX, 2);
     water->SetMaterialPropertiesTable(mptWater);
 
-    // DÜNYA VE TANK
     G4Box* solidWorld = new G4Box("World", 1.5*m, 1.5*m, 1.5*m);
     G4LogicalVolume* logicWorld = new G4LogicalVolume(solidWorld, env_air, "World");
     logicWorld->SetVisAttributes(G4VisAttributes::GetInvisible()); 
@@ -41,9 +39,6 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     tankVis->SetForceWireframe(true); 
     logicTank->SetVisAttributes(tankVis);
 
-    // =========================================================
-    // SİYAH DUVAR: DUVARE ÇARPAN FOTONU ANINDA YUT (SEKMEYİ ÖNLER)
-    // =========================================================
     G4OpticalSurface* zifiriKaranlik = new G4OpticalSurface("ZifiriKaranlik");
     zifiriKaranlik->SetType(dielectric_metal);
     zifiriKaranlik->SetFinish(polished);
@@ -58,7 +53,6 @@ G4VPhysicalVolume* TankDetectorConstruction::Construct() {
     zifiriKaranlik->SetMaterialPropertiesTable(mptSiyah);
 
     new G4LogicalSkinSurface("TankSiyahKaplama", logicTank, zifiriKaranlik);
-    // =========================================================
 
     return physWorld;
 }

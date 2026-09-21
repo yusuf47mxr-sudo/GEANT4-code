@@ -9,10 +9,8 @@ public:
     PhysicsList();
     virtual ~PhysicsList();
 
-    // Parçacıkların (foton, elektron vb.) yaratılması
     virtual void ConstructParticle();
     
-    // Kuralların (Compton, Fotoelektrik vb.) atanması
     virtual void ConstructProcess();
 };
 

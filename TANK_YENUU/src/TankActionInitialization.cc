@@ -8,12 +8,10 @@ TankActionInitialization::TankActionInitialization() : G4VUserActionInitializati
 
 TankActionInitialization::~TankActionInitialization() {}
 
-// Bu kısım sadece Ana Yönetici (Master Thread) için çalışır
 void TankActionInitialization::BuildForMaster() const {
     SetUserAction(new TankRunAction());
 }
 
-// Bu kısım 12 işçi çekirdeğin (Worker Threads) her biri için ayrı ayrı çalışır
 void TankActionInitialization::Build() const {
     SetUserAction(new TankPrimaryGeneratorAction());
     

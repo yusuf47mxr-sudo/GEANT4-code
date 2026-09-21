@@ -16,8 +16,6 @@ public:
     virtual void ConstructSDandField();
 
 private:
-    // İleride Sensitive Detector (Duyarlı Dedektör) atamak için
-    // mantıksal hacimleri sınıf üyesi olarak tanımlıyoruz.
     G4LogicalVolume* fLogicScatterer;
     G4LogicalVolume* fLogicAbsorber;
 };

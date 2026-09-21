@@ -12,7 +12,6 @@ public:
     PolarimeterSD(G4String name);
     virtual ~PolarimeterSD();
 
-    // Sistemin kalbi: Her etkileşim adımında çalışacak fonksiyon
     virtual G4bool ProcessHits(G4Step* aStep, G4TouchableHistory* history);
 };
 

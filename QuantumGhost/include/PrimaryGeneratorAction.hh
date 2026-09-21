@@ -12,7 +12,6 @@ public:
     PrimaryGeneratorAction();
     virtual ~PrimaryGeneratorAction();
 
-    // Bu fonksiyon her simülasyon olayında (event) otomatik çağrılır
     virtual void GeneratePrimaries(G4Event* anEvent);
 
 private:

@@ -14,7 +14,6 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     PrimaryGeneratorAction();    
     virtual ~PrimaryGeneratorAction();
 
-    // Bu metot her olayda (event) çağrılır
     virtual void GeneratePrimaries(G4Event*);         
 
     const G4ParticleGun* GetParticleGun() const { return fParticleGun; }

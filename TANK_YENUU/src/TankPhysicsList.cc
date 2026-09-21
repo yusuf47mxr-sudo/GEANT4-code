@@ -4,10 +4,8 @@
 
 TankPhysicsList::TankPhysicsList() : G4VModularPhysicsList()
 {
-    // Müonun suda ilerleyebilmesi için Standart Elektromanyetik Fizik
     RegisterPhysics(new G4EmStandardPhysics());
     
-    // Mavi Çerenkov fotonlarının oluşabilmesi için Optik Fizik
     RegisterPhysics(new G4OpticalPhysics());
 }
 

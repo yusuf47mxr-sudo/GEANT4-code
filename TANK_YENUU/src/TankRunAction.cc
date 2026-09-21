@@ -5,10 +5,8 @@ TankRunAction::TankRunAction() {
     auto analysisManager = G4AnalysisManager::Instance();
     analysisManager->SetDefaultFileType("root");
     
-    // Dosyaları otomatik birleştirme komutu
     analysisManager->SetNtupleMerging(true);
 
-    // Sabit dosya adı yerine varsayılan bir isim atıyoruz
     analysisManager->SetFileName("TANK_Cikti"); 
 
     analysisManager->CreateNtuple("TankData", "Simulasyon Verileri");
@@ -24,8 +22,6 @@ TankRunAction::TankRunAction() {
 void TankRunAction::BeginOfRunAction(const G4Run*) {
     auto analysisManager = G4AnalysisManager::Instance();
     
-    // Makrodaki (/analysis/setFileName) ismi otomatik çekebilmesi için 
-    // sadece bu içi boş fonksiyon kalmalı:
     analysisManager->OpenFile();
 }
 

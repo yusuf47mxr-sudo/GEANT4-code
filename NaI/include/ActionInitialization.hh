@@ -9,7 +9,6 @@ class ActionInitialization : public G4VUserActionInitialization
     ActionInitialization();
     ~ActionInitialization() override;
 
-    // Ana fonksiyon: İşçileri (Action sınıflarını) RunManager'a teslim eder.
     void Build() const override;
 };
 

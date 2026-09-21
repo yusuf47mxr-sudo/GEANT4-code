@@ -15,12 +15,9 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     virtual G4VPhysicalVolume* Construct();
 
-    // --- İŞTE EKSİK OLAN KISIM BURASIYDI ---
-    // Diğer sınıfların (SteppingAction) dedektöre ulaşması için bu gereklidir.
     const G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
 
   protected:
-    // Bu değişkeni tanımlamazsak bilgisayar "fScoringVolume nedir?" der.
     G4LogicalVolume* fScoringVolume;
 };
 

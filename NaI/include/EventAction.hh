@@ -2,7 +2,7 @@
 #define EventAction_h 1
 
 #include "G4UserEventAction.hh"
-#include "G4Event.hh"  // <--- BU ÇOK ÖNEMLİ, YOKSA HATA VERİR!
+#include "G4Event.hh"
 
 
 class EventAction : public G4UserEventAction
